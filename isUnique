@@ -1,0 +1,31 @@
+/*
+Programmer: Richmond Laureta
+Difficulty: Easy
+Question: Implement an algorithm to determine if a string has all unique characters. 
+The program should only check if alphabetic characters are unique. Spaces, quotations, numbers, etc should be ignored. 
+The case of each character matters. 'A' is not the same as 'a'.
+*/
+
+//This is for Naive/Brute force solution using nested for loop. I will optimize this code later.
+
+//I created a class that does this called isUnique
+
+public class isUnique {
+	public boolean isUnique(String str) {
+		
+		String noSpace = str.replaceAll("\\s", "");				  //removes all spaces
+		String noQuotes = noSpace.replaceAll("\"", "");			//removes all quotes
+		String input = noQuotes.replaceAll("\\d+", "");			//remove all numbers
+		
+		for (int i = 0; i < input.length(); i++) {
+			char val = input.charAt(i);
+			for (int j = i+1; j < input.length(); j++) {
+				char val1 = input.charAt(j);
+				if (val == val1) {
+					return false;
+				}
+			}	
+		}
+		return true;
+	}
+}
